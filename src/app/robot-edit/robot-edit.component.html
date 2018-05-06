@@ -1,0 +1,67 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+
+  <div fxFlex="70">
+
+    <mat-card style="min-height: 85vh; margin: 2em">
+
+      <form #robotForm="ngForm" (ngSubmit)="save(robotForm.value)">
+
+        <mat-card-header>
+            <mat-card-title style="margin-left: 4em"><h2>{{robot.name ? 'Edit' : 'Add'}} Robot</h2></mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+
+          <div fxFlex="10"></div>
+
+          <div fxFlex="70" style="margin-top: 2em">
+
+            <div fxLayout="column">
+
+              <input *ngIf="robot.id" type="hidden" name="id" [(ngModel)]="robot.id">
+
+              <mat-form-field>
+                <input matInput placeholder="Robot Name" [(ngModel)]="robot.name"
+                       required name="name" #name>
+              </mat-form-field>
+
+
+              <mat-form-field>
+                <input type="number" matInput placeholder="Price"  [(ngModel)]="robot.price"
+                       required name="price" #price>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="10"></div>
+
+
+        </mat-card-content>
+
+        <mat-card-actions>
+
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <button mat-raised-button color="primary" type="submit"
+                    [disabled]="!robotForm.form.valid">Save
+            </button>
+            <button mat-raised-button color="warn" (click)="confirmDelete()"
+                    *ngIf="robot.id" type="button">Delete
+            </button>
+            <a mat-button routerLink="/robot-list">Cancel</a>
+          </div>
+        </mat-card-actions>
+        <mat-card-footer>
+          <div fxLayout="row" fxLayoutAlign="center center" class="giphy">
+            <img src="{{robot.giphyUrl}}" alt="{{robot.name}}">
+          </div>
+        </mat-card-footer>
+
+      </form>
+
+
+    </mat-card>
+
+  </div>
+</div>
+
+

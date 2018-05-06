@@ -1,0 +1,28 @@
+import { Component } from '@angular/core';
+import {AuthenticationService} from "./shared/authentication-service.service";
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+
+  title = 'Robot App';
+
+  constructor(private authenticationService: AuthenticationService) {
+  }
+
+  logOut() {
+    this.authenticationService.logout();
+  }
+
+  isUserLogged() : boolean {
+    return this.authenticationService.isUserlogged()
+  }
+
+  getUsername():string{
+    return this.authenticationService.getUsername();
+  }
+
+}

@@ -1,0 +1,27 @@
+<div fxLayout fxLayoutAlign="center center" style="min-height: 70vh">
+  <mat-card fxFlex="30%">
+    <mat-card-title>Login</mat-card-title>
+
+
+    <form name="form" (ngSubmit)="loginForm.form.valid && onClickLogIn()" #loginForm="ngForm" novalidate>
+
+      <mat-card-content fxLayout="column">
+        <mat-form-field>
+          <input type="text" name="username" [(ngModel)]="username" matInput placeholder="Username" #name="ngModel" required>
+           <mat-error *ngIf="loginForm.submitted && !name.valid">Username is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" name="password" [(ngModel)]="pass" matInput  #password="ngModel" placeholder="Password" required>
+          <mat-error *ngIf="loginForm.submitted && !password.valid">Password is required</mat-error>
+        </mat-form-field>
+
+         <mat-error *ngIf="loginForm.submitted && errorMsg ">{{errorMsg}}</mat-error>
+
+      </mat-card-content>
+      <button (click)="onClickLogIn()" mat-raised-button color="primary">Login</button>
+
+
+    </form>
+  </mat-card>
+</div>
+

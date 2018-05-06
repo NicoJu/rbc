@@ -1,0 +1,25 @@
+.mat-header-cell {
+  font-size: small;
+  font-weight: bold;
+  display: flex;
+  justify-content:center;
+  color: black;
+}
+
+.header {
+  margin-top: 2em;
+}
+
+.mat-cell {
+  font-size: 0.85em;
+  text-align: center;
+}
+
+.mat-header-cell.mat-sort-header-sorted {
+  color: red;
+;
+}
+
+.filter {
+  margin-left: 10px;
+}

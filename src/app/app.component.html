@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" *ngIf='isUserLogged()'>
+
+  <span style="margin-left: 15px">Welcome to {{title}}!</span>
+
+
+  <span class="spacer"></span>
+
+  {{ getUsername() }}
+
+  <button aria-label="Open phone interactions menu" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logOut()">
+      <mat-icon>launch</mat-icon>
+      <span style="margin-right: 15px">Logout</span>
+    </button>
+  </mat-menu>
+
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>

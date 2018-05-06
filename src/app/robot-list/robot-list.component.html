@@ -1,0 +1,51 @@
+<mat-card style="min-height: 85vh; margin: 2em">
+  <mat-card-header>Robot List :</mat-card-header>
+
+  <mat-card-content>
+
+    <div>
+      <mat-form-field class="header">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+
+
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <!--  Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> price </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.price | currency:'USD' }}</mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button type="button" style="margin-right: 40px">
+            <a mat-raised-button color="warn" [routerLink]="['/robot-edit', row.id]">Edit</a>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+
+  </mat-card-content>
+
+
+  <button mat-fab color="primary" [routerLink]="['/robot-add']">Add</button>
+
+</mat-card>
